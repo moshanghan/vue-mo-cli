@@ -1,0 +1,2 @@
+var browser=navigator.userAgent;
+

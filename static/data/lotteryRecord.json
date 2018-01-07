@@ -1,0 +1,25 @@
+{
+  "bizCode": "000000",
+  "bizMessage": "",
+  "totalCount": 0,
+  "currCount": 0,
+  "pageIndex": 0,
+  "pageSize": 0,
+  "list": [{
+    "ordered": false,
+    "orderAddress": null,
+    "picUrlWinning": "http://qdtalk.com/wp-content/uploads/2017/09/1-1.png",
+    "orderNo": null,
+    "level": 1,
+    "receiverName": null,
+    "drawTime": 1506752670000,
+    "mobile": "18988881366",
+    "receiverMobile": null,
+    "commodityId": "15",
+    "lotteryPrizeType": 1,
+    "empName": "张四",
+    "id": "d14a4cf857ce47b29bae0c966ce18038",
+    "commodityName": "华为 P10 Plus 全网通 4G 手机 双卡双待-6G+128G-玫瑰金"
+  }],
+  "success": true
+}

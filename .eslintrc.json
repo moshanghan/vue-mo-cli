@@ -1,0 +1,35 @@
+{
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    // "extends": "eslint:recommended",
+    "rules": {
+        "no-undef": 1,
+        "no-new": 1, //禁止在使用new构造一个实例后不赋
+        "no-tabs": 0,
+        "indent": 1,
+        "no-mixed-spaces-and-tabs": [0, false], //禁止混用tab和空格
+        "camelcase": 0, //驼峰法命名
+        "eqeqeq": 0, //全等
+        // "indent": ["error", 2, {"SwitchCase": 1}],
+        "arrow-parens": 0,
+        "generator-star-spacing": 0
+        // "indent": [
+        //     "error",
+        //     "tab"
+        // ],
+        // "linebreak-style": [
+        //     "error",
+        //     "windows"
+        // ],
+        // "quotes": [
+        //     "error",
+        //     "single"
+        // ],
+        // "semi": [
+        //     "error",
+        //     "always"
+        // ]
+    }
+}
