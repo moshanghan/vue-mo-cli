@@ -1,5 +1,7 @@
-module.exports = {
+module.exports ={
+  
   NODE_ENV: '"production"',
+  ENV_CONFIG: '"prod"',
   baseUrl: '"http://this is production address"',
   /*福币商品skuID*/
   rechargeList: `[{

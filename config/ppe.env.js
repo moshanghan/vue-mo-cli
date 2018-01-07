@@ -1,4 +1,6 @@
 module.exports = {
+  NODE_ENV: '"ppeEnvironment"',
+  ENV_CONFIG: '"ppe"',
   NODE_ENV: '"ppe"',
   baseUrl: '"http://this is pro-porduction address"',
   /*福币商品skuID*/

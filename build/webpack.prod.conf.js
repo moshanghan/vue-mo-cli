@@ -9,10 +9,13 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
-var env = process.env.NODE_ENV === 'testing' ?
-    require('../config/test.env') :
-    config.build.env
-
+const env = config.build[process.env.env_config+'Env']
+// var env = process.env.NODE_ENV === 'testing' ?
+//     require('../config/test.env') :
+//     config.build.env
+function resolveApp(relativePath) {
+        return path.resolve(relativePath);
+      }
 var webpackConfig = merge(baseWebpackConfig, {
     module: {
         rules: utils.styleLoaders({
@@ -37,6 +40,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false,
+                drop_debugger: true,//打包后移除debugger
                 drop_console: true,//打包后移除console
                 pure_funcs: ['console.log']//打包后移除console
             },
@@ -61,6 +65,7 @@ var webpackConfig = merge(baseWebpackConfig, {
             filename: process.env.NODE_ENV === 'testing' ?
                 'index.html' : config.build.index,
             template: 'index.html',
+            favicon: resolveApp('favicon.ico'),
             inject: true,
             minify: {
                 removeComments: true,

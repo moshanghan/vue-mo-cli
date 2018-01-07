@@ -4,7 +4,7 @@
       <h2>data数据</h2>
       <div class="wap">
         <p>{{address}}</p>
-        <p>{{text}}</p>
+        <p>{{ }}</p>
         <span>开发环境下，本地代理，用get请求跨域接口，成功返回</span>
         <p>{{data}}</p>
       </div>
@@ -42,9 +42,10 @@ export default {
     })
   },
   methods: {
-
+         
     get () { // 开发环境跨域时调用本地代理 具体查看 config-->index.js
-      this.$http.post(process.env.baseUrl)
+    console.log(process.env.baseUrl);
+      this.$http.get(process.env.baseUrl)
         .then(res => {
           console.log(res)
           this.data = res

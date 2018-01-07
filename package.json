@@ -6,12 +6,12 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
-    "build": "set NODE_ENV=production&&node build/build.js",
-    "buildppe": "set NODE_ENV=ppe&&node build/build.js",
-    "buildtest": "set NODE_ENV=ddd&&node build/build.js",
+    "build": "node build/build.js",
+    "build:prod": "cross-env NODE_ENV=production env_config=prod node build/build.js",
+    "build:ppe": "cross-env NODE_ENV=ppeEnvironment env_config=ppe node build/build.js",
+    "build:sit": "cross-env NODE_ENV=sitEnvironment env_config=sit node build/build.js",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run e2e",
-    "build:dll": "webpack --config build/webpack.dll.conf.js",
     "analyz": "NODE_ENV=production  npm_config_report=true npm run build"
   },
   "dependencies": {
@@ -22,6 +22,7 @@
     "vue-router": "^2.2.0",
     "vue2-datepick": "^1.0.6",
     "vuex": "^2.3.0",
+    "cross-env": "^5.1.1",
     "weixin-js-sdk": "^1.2.0"
   },
   "devDependencies": {

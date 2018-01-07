@@ -1,25 +1,12 @@
-var webpack = require('webpack');
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
-var myPath
-function resolve (dir) {
+
+function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
-function assetsPublicPath(){
-  if( process.env.NODE_ENV === 'production'){
-    myPath=config.build.assetsPublicPath
-  }else if(process.env.NODE_ENV === 'ppe'){
-    myPath=config.buildppe.assetsPublicPath
-  }else if(process.env.NODE_ENV === 'ddd'){
-    myPath=config.buildddd.assetsPublicPath
-  }
-  else{
-    myPath=config.dev.assetsPublicPath
-  }
-  return myPath
-}
+
 module.exports = {
   entry: {
     app: './src/main.js'
@@ -27,20 +14,30 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath:assetsPublicPath()
-    // publicPath: process.env.NODE_ENV === 'production'
-    //   ? config.build.assetsPublicPath
-    //   : config.dev.assetsPublicPath
+    // publicPath: process.env.NODE_ENV === 'production' ?
+    //   config.build.assetsPublicPath :
+    //   config.dev.assetsPublicPath
+    publicPath: process.env.NODE_ENV === 'development' ?
+      config.dev.assetsPublicPath : config.build.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      '@': resolve('src')
     }
   },
   module: {
     rules: [
+      // {
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      //   include: [resolve('src'), resolve('test')],
+      //   options: {
+      //     formatter: require('eslint-friendly-formatter')
+      //   }
+      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -66,14 +63,12 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /vue-preview.src.*?js$/,
+        loader: 'babel'
       }
+
     ]
-  },
-  // 添加DllReferencePlugin插件
-  plugins: [
-    new webpack.DllReferencePlugin({
-        context: path.resolve(__dirname, '..'),
-        manifest: require('./vendor-manifest.json')
-    }),
-]
+  }
 }
