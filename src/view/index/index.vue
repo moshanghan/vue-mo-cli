@@ -4,7 +4,7 @@
       <h2>data数据</h2>
       <div class="wap">
         <p>{{address}}</p>
-        <p>{{ }}</p>
+        <p>{{text}}</p>
         <span>开发环境下，本地代理，用get请求跨域接口，成功返回</span>
         <p>{{data}}</p>
       </div>
@@ -18,31 +18,31 @@
             </router-link>
           </li>
         </ul>
-
+      <h2>input格式化</h2>
+      <input type="tel" v-model="codeStr" placeholder="请输入福利码" ref="codeIpt" @input="cardCount($event)" maxlength="19" @keydown="down($event)">
     </div>
-
   </div>
 </template>
-
 <script>
+import {inputFormat} from "@/utils/inputFormat";
 export default {
   data () {
     return {
       address: '',
       text: '',
-      data: ''
+      data: '',
+      codeStr:''
     }
   },
+  mixins:[inputFormat],
   mounted () {
     this.$nextTick(() => {
       this.address = process.env.baseUrl
       this.text = process.env.rechargeList
-
       this.get()
     })
   },
   methods: {
-         
     get () { // 开发环境跨域时调用本地代理 具体查看 config-->index.js
     console.log(process.env.baseUrl);
       this.$http.get(process.env.baseUrl)
