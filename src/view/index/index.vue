@@ -1,6 +1,6 @@
 <template>
   <div v-title='"mo"' class="mo">
-    <div class="data">
+    <!-- <div class="data">
       <h2>data数据</h2>
       <div class="wap">
         <p>{{address}}</p>
@@ -8,7 +8,7 @@
         <span>开发环境下，本地代理，用get请求跨域接口，成功返回</span>
         <p>{{data}}</p>
       </div>
-    </div>
+    </div> -->
     <div class="demo">
       <h2>demo</h2>
         <ul>
